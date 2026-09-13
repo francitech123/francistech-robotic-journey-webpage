@@ -42,4 +42,48 @@ export default function GalleryTab() {
 
   return (
     <section className="tab-gallery">
-      <h2>
+      <h2>Gallery</h2>
+
+      {project?.youtubeVideoId && (
+        <div className="gallery-embed">
+          <iframe
+            title="Project video"
+            src={`https://www.youtube.com/embed/${project.youtubeVideoId}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      )}
+
+      {images.length === 0 ? (
+        <div className="empty-state">
+          <p className="empty-state__title">No gallery images yet.</p>
+        </div>
+      ) : (
+        <ul className="gallery-grid">
+          {images.map((img, i) => (
+            <li key={img.id} className="gallery-item">
+              <button type="button" onClick={() => setOpen(i)} aria-label={`Open image ${i + 1}`}>
+                <img src={img.url} alt={img.caption} loading="lazy" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {open !== null && images[open] && (
+        <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setOpen(null)}>
+          <button className="lightbox__close" onClick={() => setOpen(null)} aria-label="Close">×</button>
+          <img src={images[open].url} alt={images[open].caption} onClick={(e) => e.stopPropagation()} />
+          <div className="lightbox__caption">{images[open].caption}</div>
+          <a
+            className="btn btn-secondary btn--sm lightbox__download"
+            href={images[open].url}
+            download
+            onClick={(e) => e.stopPropagation()}
+          >Download</a>
+        </div>
+      )}
+    </section>
+  );
+}
