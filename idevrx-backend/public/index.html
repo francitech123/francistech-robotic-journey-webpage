@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Idevrx — Ideas engineered into reality</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,500&family=Figtree:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EFE8DC;--sf:#F6F1E7;--ink:#1A1612;--mute:#6F675E;--line:#DDD3C4;--ls:#C9BEAC;--p:#C4501A;--ph:#9A3E12;--s:#3F6E4A;--a:#B26A18;--on:#F6F1E7;--serif:Newsreader,Georgia,serif;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14110E;--sf:#1E1915;--ink:#EFE8DC;--mute:#A89F92;--line:#33291F;--ls:#4A3E31;--p:#E0743A;--ph:#F08A52;--s:#6FB27D;--a:#D9983F;--on:#14110E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14110E;--sf:#1E1915;--ink:#EFE8DC;--mute:#A89F92;--line:#33291F;--ls:#4A3E31;--p:#E0743A;--ph:#F08A52;--s:#6FB27D;--a:#D9983F;--on:#14110E;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Figtree,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:30}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+.mono{font-size:.82rem;letter-spacing:.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--sf);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.04em}
+.logo svg{width:26px;height:26px}
+nav{display:flex;gap:4px;flex:1}
+nav a{padding:6px 12px;border-radius:6px;color:var(--mute);font-weight:500}
+nav a[aria-current],nav a:hover{color:var(--ink);background:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:6px;border:1px solid var(--ls);background:transparent;font-weight:600;cursor:pointer;transition:background-color .15s,border-color .15s}.btn:hover{background:var(--sf)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.pri{background:var(--p);border-color:var(--p);color:var(--on)}.btn.pri:hover{background:var(--ph);border-color:var(--ph)}
+.btn.sm{padding:6px 12px;font-size:.875rem}
+main{min-height:70vh;padding-bottom:64px}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em;font-weight:500;font-family:var(--serif);margin:0 0 20px}
+h2{font-family:var(--serif);font-weight:500;font-size:1.6rem;letter-spacing:-.015em;margin:0 0 6px}
+.lead{color:var(--mute);max-width:52ch;font-size:1.1rem}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 48px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.rec{background:var(--sf);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.rec .k{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--mute)}
+.rec dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:14px}
+.rec dt{color:var(--mute)}.rec dd{margin:0}
+.sec{padding:36px 0}
+.sh{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px;gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+.card:hover{border-color:var(--p);transform:translateY(-2px)}
+.card svg{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
+.cb{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cb h3{margin:0;font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.25}
+.num{color:var(--p);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{border:1px solid var(--ls);border-radius:999px;padding:1px 10px;color:var(--mute);font-size:.78rem}
+.foot{display:flex;justify-content:space-between;margin-top:auto;padding-top:8px;color:var(--mute);font-size:.85rem}
+.lvl{font-weight:600}
+.l1{color:var(--s)}.l2{color:var(--a)}.l3{color:var(--p)}.l4{color:#A32B22}
+.paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.path{border:1px solid var(--line);background:var(--sf);border-radius:6px;padding:14px}
+.path b{display:block}
+.cta{border:1px solid var(--line);background:var(--sf);border-radius:6px;padding:32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-left:4px solid var(--p)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
+.chip{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sf);cursor:pointer;font-size:.9rem}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-weight:600;font-size:.9rem}
+input,select,textarea{padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--sf);width:100%;font:inherit;color:inherit}input:focus,select:focus,textarea:focus{border-color:var(--p);outline:0}
+.search{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 8px}
+.search input{flex:1;min-width:220px}.search select{width:auto}
+.pd{display:grid;grid-template-columns:200px 1fr;gap:40px;padding-top:32px}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line)}
+.toc a{padding:4px 14px;color:var(--mute);font-size:.9rem}.toc a:hover{color:var(--p)}
+.doc section{padding:0 0 32px;margin-bottom:32px;border-bottom:1px solid var(--line)}
+.doc section:last-child{border:0}
+.doc p{max-width:68ch}
+.tbl{width:100%;border-collapse:collapse}
+.tbl td,.tbl th{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left}
+.tbl th{color:var(--mute);font-weight:500}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;padding:10px 0}
+.steps li::before{content:counter(s,decimal-leading-zero);font:500 .85rem "JetBrains Mono",monospace;color:var(--p);padding-top:3px}
+.dl{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:8px;background:var(--sf);gap:12px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));border:1px solid var(--line);border-radius:6px;background:var(--sf);margin:20px 0}
+.meta div{padding:12px 14px;border-right:1px solid var(--line)}
+.meta div:last-child{border:0}
+.meta span{display:block;color:var(--mute);font-size:.8rem}
+.video{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--mute);background:var(--sf);text-align:center;padding:20px}
+.prof{display:flex;gap:20px;align-items:center;padding:44px 0 12px;flex-wrap:wrap}
+.av{width:72px;height:72px;border-radius:999px;background:var(--p);color:var(--on);display:grid;place-items:center;font-family:var(--serif);font-size:1.9rem}
+.auth{max-width:400px;margin:56px auto 0;background:var(--sf);border:1px solid var(--line);border-radius:6px;padding:28px}
+.tabs{display:flex;gap:4px;margin-bottom:18px}
+.msg{color:#DC2626;font-size:.875rem;min-height:1.3em}
+.empty{border:1px dashed var(--line);border-radius:6px;padding:32px;text-align:center;color:var(--mute)}
+footer{background:#1A1612;padding:24px 0;color:#F6F1E7;font-size:.9rem}
+.shell{display:grid;grid-template-columns:248px 1fr;min-height:70vh}.side{background:#1A1612;color:#F6F1E7;padding:20px 0;display:flex;flex-direction:column;gap:2px}.side a{padding:10px 20px;border-left:3px solid transparent;opacity:.8}.side a:hover,.side a[aria-current]{background:rgba(246,241,231,.1);opacity:1}.side a[aria-current]{border-left-color:var(--p)}.side .who{padding:12px 20px;font-size:.8rem;opacity:.6;margin-top:auto}.pane{padding:32px 32px 64px;min-width:0}.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ck{list-style:none;padding:0}.ck li{padding:7px 0;border-bottom:1px solid var(--line)}textarea{resize:vertical}
+@media(max-width:1180px){.shell{grid-template-columns:1fr}.side{flex-direction:row;overflow-x:auto;padding:0}.side a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}.side a[aria-current]{border-bottom-color:var(--p)}.side .who{display:none}.pane{padding:24px 16px 48px}.g2{grid-template-columns:1fr}}
+@media(max-width:800px){.hero,.pd{grid-template-columns:1fr}.toc{display:none}nav a{padding:6px 8px}.bar{gap:8px}.hide{display:none}.wrap{padding:0 16px}}
+@media(prefers-reduced-motion:no-preference){.rec{animation:in .5s ease-out}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}.cm{padding:12px 0;border-bottom:1px solid var(--line)}.cm.r{margin-left:28px}.cm small{color:var(--mute)}.cm a{color:var(--p)}
+a.path{display:block}a.path:hover{border-color:var(--p)}.pb{height:6px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:8px}.pb i{display:block;height:100%;background:var(--p)}
+.code{background:#1A1612;color:#F6F1E7;border-radius:10px;padding:16px;overflow:auto;max-height:480px;font:13px/1.55 "JetBrains Mono",ui-monospace,monospace;tab-size:2;margin:0}.code code{font:inherit}.tc{color:#A89F92}.ts{color:#9BCB9B}.tn{color:#D9983F}.tk{color:#F08A52}canvas.stl{display:block;width:100%;height:420px;border:1px solid var(--line);border-radius:10px;background:var(--sf);touch-action:none;cursor:grab}
+</style></head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#home" aria-label="Idevrx home"><svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><rect x="2" y="15" width="7" height="21" rx="1.5"/><rect x="2" y="5" width="7" height="6" rx="1.5"/><path fill-rule="evenodd" d="M14 3.5 38 20 14 36.5ZM21 13.5v13L30.5 20Z"/></svg>IDEVRX</a>
+<nav id="nav"><a href="#home" data-r="home">Home</a><a href="#projects" data-r="projects">Projects</a><a href="#learning" data-r="learning">Learning</a><a href="#search" data-r="search">Search</a></nav>
+<span id="acct"></span>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap">Idevrx. Ideas engineered into reality.</div></footer>
+<script>
+const P=[
+{n:"001",slug:"arduino-rfid-smart-lock",t:"Arduino RFID Smart Lock",c:"Electronics",sub:"Arduino",by:"francistech",tags:["Arduino","RFID","Servo","C++"],d:1,time:"4–6 hrs",cost:"₦65,000",st:"Completed",h:210,mcu:"Arduino UNO",lang:"C++",sens:"RFID RC522",act:"SG90 Servo",pw:"5V",com:"None",
+about:"A door lock that opens when an authorised RFID card is scanned or a PIN is entered on the keypad. It logs failed attempts on the LCD and sounds the buzzer after three.",
+why:"Keys get lost and shared. A card-based lock is cheap enough to build in an afternoon and teaches input handling, SPI and servo control in one project.",
+bom:[["Arduino UNO",1,"ATmega328P, 5V"],["RFID RC522 + cards",1,"13.56 MHz, SPI"],["SG90 servo",1,"180°, 5V"],["16x2 LCD (I2C)",1,"Address 0x27"],["4x4 keypad",1,"Matrix"],["Buzzer",1,"Active, 5V"]],
+steps:["Mount the Arduino and breadboard on the base plate.","Wire the RC522 to the SPI pins (D10, D11, D12, D13) and 3.3V.","Connect the servo signal to D9 and power it from 5V.","Upload the sketch, then register your first card as the master.","Test valid card, invalid card, and keypad fallback."],
+prob:"The RC522 is 3.3V logic. Powering it from 5V made reads fail at random. Moving it to the 3.3V pin fixed it.",next:"Add an ESP32 for Wi-Fi unlock logs and a phone notification when the door opens.",files:["Source code (.ino)","Schematic (.png)","Project ZIP"]},
+{n:"002",slug:"12-servo-robotic-arm",t:"12-Servo Robotic Arm",c:"Robotics",sub:"Robotic Arms",by:"alexrobotics",tags:["ESP32","Servo","CAD","3D Printing"],d:3,time:"3–4 weeks",cost:"₦210,000",st:"Completed",h:265,mcu:"ESP32",lang:"C++",sens:"Potentiometers",act:"MG996R x12",pw:"6V / 20A",com:"Wi-Fi",
+about:"A desk-sized arm with a two-finger gripper and a wrist that rotates on two axes, driven by twelve servos and controlled from a browser.",why:"Hobby arms with fewer joints cannot do tasks that need wrist orientation. This build adds the missing joints while staying printable.",
+bom:[["ESP32 DevKit",1,"30-pin"],["MG996R servo",12,"Metal gear"],["PCA9685 driver",1,"16 channel"],["6V 20A supply",1,"Regulated"],["PETG filament",2,"1 kg spools"]],
+steps:["Print all parts in PETG at 40% infill.","Assemble the base and shoulder first and calibrate neutral angles.","Wire all servos through the PCA9685, not the ESP32 pins.","Flash the firmware and open the control page.","Calibrate each joint limit before running motions."],
+prob:"Servos browned out the ESP32 when all moved at once. A separate supply and a common ground solved it.",next:"Inverse kinematics and a camera-guided pick and place routine.",files:["Firmware (.cpp)","STL pack","STEP assembly","Project ZIP"]},
+{n:"003",slug:"esp32-smart-home-controller",t:"ESP32 Smart Home Controller",c:"Automation",sub:"Home Automation",by:"buildwithjohn",tags:["ESP32","IoT","Python","Relay"],d:2,time:"1–2 days",cost:"₦38,000",st:"Completed",h:180,mcu:"ESP32",lang:"C++ / Python",sens:"DHT22, PIR",act:"4-channel relay",pw:"5V",com:"Wi-Fi, MQTT",
+about:"Four mains relays, a temperature sensor and a motion sensor on one board, controlled over MQTT from a small Python dashboard.",why:"Off-the-shelf smart plugs depend on someone else’s cloud. This keeps everything on your local network.",
+bom:[["ESP32 DevKit",1,"30-pin"],["4-channel relay",1,"Opto-isolated, 5V"],["DHT22",1,"Temp and humidity"],["PIR sensor",1,"HC-SR501"],["5V PSU",1,"2A"]],
+steps:["Wire the relay inputs to four free GPIO pins.","Connect the DHT22 and PIR sensors.","Flash firmware with your Wi-Fi and MQTT broker details.","Run the Python dashboard and toggle each relay.","Enclose mains wiring in an insulated box before use."],
+prob:"Relays clicked at boot. Setting the pins HIGH before enabling output stopped it.",next:"Scheduling rules and energy monitoring.",files:["Firmware (.cpp)","Dashboard (.py)","Project ZIP"]},
+{n:"004",slug:"bluetooth-rover",t:"Bluetooth Rover",c:"Robotics",sub:"Mobile Robots",by:"francistech",tags:["Arduino","Bluetooth","Motors"],d:1,time:"1 day",cost:"₦28,000",st:"Completed",h:30,mcu:"Arduino UNO",lang:"C++",sens:"HC-SR04",act:"4 DC motors",pw:"7.4V Li-ion",com:"Bluetooth",
+about:"A four-wheel rover driven from a phone, with an ultrasonic sensor that stops it before it hits a wall.",why:"The simplest complete robot: power, drive, sense, and wireless control.",
+bom:[["Arduino UNO",1,"ATmega328P"],["L298N driver",1,"2A per channel"],["HC-05",1,"Bluetooth serial"],["HC-SR04",1,"Ultrasonic"],["Chassis kit",1,"4WD"]],
+steps:["Assemble the chassis and mount the motors.","Wire the L298N to the motors and Arduino.","Connect the HC-05 and flash the sketch.","Pair your phone and test each direction.","Add the ultrasonic stop at 15 cm."],
+prob:"Motors reset the Arduino. A 100 µF capacitor across the supply fixed it.",next:"Line following and PID speed control.",files:["Source code (.ino)","Project ZIP"]},
+{n:"005",slug:"opencv-object-tracker",t:"OpenCV Object Tracker",c:"AI & Computer Vision",sub:"Object Detection",by:"alexrobotics",tags:["Raspberry Pi","OpenCV","Python","Servo"],d:3,time:"1 week",cost:"₦95,000",st:"In progress",h:150,mcu:"Raspberry Pi 4",lang:"Python",sens:"Pi Camera v2",act:"Pan-tilt servos",pw:"5V / 3A",com:"Wi-Fi",
+about:"A pan-tilt camera that finds a coloured object and keeps it centred in the frame.",why:"Tracking is the first step to every vision-guided robot, and a Pi can do it in real time.",
+bom:[["Raspberry Pi 4 (4GB)",1,"With heatsink"],["Pi Camera v2",1,"8 MP"],["Pan-tilt bracket",1,"2 x SG90"],["5V 3A supply",1,"USB-C"]],
+steps:["Install Raspberry Pi OS and OpenCV.","Mount the camera on the pan-tilt bracket.","Tune HSV thresholds for your object.","Compute the offset from frame centre.","Drive the servos with a PID loop."],
+prob:"Servo jitter at the frame centre. A dead zone of 10 pixels removed it.",next:"Replace colour tracking with a small neural network detector.",files:["Source code (.py)","Project ZIP"]},
+{n:"006",slug:"self-balancing-robot",t:"Self-Balancing Robot",c:"Robotics",sub:"Mobile Robots",by:"buildwithjohn",tags:["ESP32","IMU","PID","Stepper"],d:4,time:"2–3 weeks",cost:"₦72,000",st:"Completed",h:320,mcu:"ESP32",lang:"C++",sens:"MPU6050",act:"2 NEMA17 steppers",pw:"12V",com:"Bluetooth",
+about:"A two-wheeled robot that stays upright by reading its tilt and correcting 200 times a second.",why:"Balancing makes control theory physical. You see the effect of every tuning change in seconds.",
+bom:[["ESP32 DevKit",1,"30-pin"],["MPU6050",1,"6-axis IMU"],["NEMA17 stepper",2,"1.8°, 1.5A"],["A4988 driver",2,"1/16 microstepping"],["3S LiPo",1,"11.1V, 2200 mAh"]],
+steps:["Build the frame so the battery sits high.","Wire the IMU over I2C and the drivers to the steppers.","Read pitch with a complementary filter.","Tune P first, then D, then I.","Add Bluetooth drive commands last."],
+prob:"Oscillation grew over time. Lowering the loop jitter and filtering gyro drift fixed it.",next:"Position hold and obstacle avoidance.",files:["Firmware (.cpp)","STL pack","Project ZIP"]}];
+const U={francistech:{name:"FrancisTech",bio:"Embedded systems and edtech. Builds robots and the tools around them.",fol:320},alexrobotics:{name:"Alex Robotics",bio:"Robotic arms and computer vision. Documents every calibration step.",fol:210},buildwithjohn:{name:"BuildWithJohn",bio:"Home automation and balancing robots, built with parts from local markets.",fol:148}};
+const L=["Arduino Fundamentals","Electronics Fundamentals","ESP32 Development","Robotics Fundamentals","Robotic Arms","Mobile Robotics","Computer Vision","ROS2"];
+const DL=["","Beginner","Intermediate","Advanced","Expert"];
+const $=s=>document.querySelector(s),app=$("#app");
+const E=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const href=p=>"#project-"+p.n;
+function cover(p){if(p.img)return `<img src="${p.img}" alt="Cover for ${E(p.t)}" style="display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-bottom:1px solid var(--line)">`;const h=22,s=+p.n;let g="";for(let i=1;i<8;i++)g+=`<path d="M${i*50} 0V200M0 ${i*25}H400" stroke="hsl(${h} 60% 55% / .12)"/>`;
+return `<svg viewBox="0 0 400 200" role="img" aria-label="Sample cover for ${E(p.t)}"><rect width="400" height="200" fill="hsl(${h} 70% 50% / .08)"/>${g}<path d="M40 150H${120+s*10}V70H300V${110+s*4}H360" fill="none" stroke="hsl(${h} 70% 50%)" stroke-width="2.5"/><circle cx="40" cy="150" r="6" fill="hsl(${h} 70% 50%)"/><rect x="${290}" y="${54+s*3}" width="24" height="32" rx="3" fill="none" stroke="hsl(${h} 70% 50%)" stroke-width="2"/><circle cx="360" cy="${110+s*4}" r="6" fill="hsl(${h} 70% 50%)"/></svg>`}
+function card(p){return `<a class="card" href="${href(p)}">${cover(p)}<div class="cb"><span class="mono num">PROJECT ${p.n}</span><h3>${E(p.t)}</h3><div class="tags">${p.tags.slice(0,3).map(t=>`<span class="tag mono">${E(t)}</span>`).join("")}</div><div class="foot"><span class="lvl l${p.d}">${DL[p.d]} · ${p.time}</span><span>${E(U[p.by].name)}</span></div></div></a>`}
+function user(){try{return JSON.parse(localStorage.getItem("idevrx_user"))}catch(e){return null}}
+function setUser(u){try{u?localStorage.setItem("idevrx_user",JSON.stringify(u)):localStorage.removeItem("idevrx_user")}catch(e){}}
+let mem=null;const cur=()=>user()||mem;
+function acct(){const u=cur();$("#acct").innerHTML=u?`<a class="btn sm hide" href="#dashboard">Dashboard</a> <a class="btn sm pri" href="#create">Create project</a> <button class="btn sm" id="out">Sign out</button>`:`<a class="btn sm pri" href="#login">Sign in</a>`;const o=$("#out");if(o)o.onclick=()=>{mem=null;setUser(null);acct();location.hash="home"}}
+const V={
+home(){const f=P[0]||{n:"000",t:"Your first project",mcu:"—",lang:"—",sens:"—",act:"—",pw:"—",cost:"—",st:"Draft"};return `<div class="wrap"><section class="hero"><div><h1>Ideas engineered into reality.</h1><p class="lead">Document your robotics and electronics projects so the next person can build them. Components, schematics, code and files, in one place.</p><div class="row"><a class="btn pri" href="#projects">Explore projects</a><a class="btn" href="#login">Start building</a></div></div>
+<dl class="rec" style="margin:0"><div class="k mono"><span>PROJECT ${f.n}</span><span>${f.st}</span></div><dl>${[["Title",f.t],["Controller",f.mcu],["Language",f.lang],["Sensors",f.sens],["Actuators",f.act],["Power",f.pw],["Cost",f.cost]].map(r=>`<dt class="mono">${r[0]}</dt><dd class="mono">${E(r[1])}</dd>`).join("")}</dl></dl></section>
+<section class="sec"><div class="sh"><div><h2>Featured projects</h2><span class="lead" style="font-size:1rem">Every project lists its parts, files and build steps.</span></div><a class="btn sm" href="#projects">All projects</a></div><div class="grid">${((window.FEATURED&&window.FEATURED.length)?window.FEATURED:P.slice(0,3)).map(card).join("")}</div></section>
+<section class="sec"><div class="sh"><h2>Latest projects</h2></div><div class="grid">${((window.FEATURED&&window.FEATURED.length)?P.slice(0,6):P.slice(3,9)).map(card).join("")}</div></section>
+<section class="sec"><h2>Learn by building</h2><p class="lead">Paths pair short lessons with real projects.</p><div class="paths">${L.map(l=>`<a class="path" href="#learn-${l.toLowerCase().replace(/[^a-z0-9]+/g,"-")}"><b>${l}</b></a>`).join("")}</div></section>
+<section class="sec"><div class="cta"><div><h2>Built something?</h2><span class="lead" style="font-size:1rem">Document it and help someone build it next.</span></div><a class="btn pri" href="#login">Create an account</a></div></section></div>`},
+projects(){return `<div class="wrap"><div class="sec"><h1 style="font-size:2.4rem">Projects</h1><div class="chips" id="cc"></div><div id="pg" class="grid"></div></div></div>`},
+search(){return `<div class="wrap"><div class="sec"><h1 style="font-size:2.4rem">Search</h1><div class="search"><input id="q" type="search" placeholder="Try ESP32, servo, RFID, robotic arm" aria-label="Search projects"><select id="lv" aria-label="Difficulty"><option value="0">Any difficulty</option>${[1,2,3,4].map(i=>`<option value="${i}">${DL[i]}</option>`).join("")}</select></div><p class="mono" id="cnt" style="color:var(--mute)"></p><div id="sr" class="grid"></div></div></div>`},
+project(id){const p=P.find(x=>x.n===id);if(!p)return nf();const u=U[p.by];
+return `<div class="wrap"><div class="pd"><nav class="toc" aria-label="On this page">${["Overview","Why I built it","Components","Build","Problems","Video","Downloads","Next version","Revision history","Comments"].map(s=>`<a href="#project-${p.n}" data-s="${s}">${s}</a>`).join("")}</nav><article class="doc">
+<span class="mono num">PROJECT ${p.n} · v${E(p.ver||"1.0")}</span><h1 style="font-size:clamp(2rem,5vw,3rem)">${E(p.t)}</h1><p class="lead">Built by <a href="#creator-${p.by}" style="color:var(--p);font-weight:600">${E(u.name)}</a></p><div class="tags">${p.tags.map(t=>`<span class="tag mono">${E(t)}</span>`).join("")}</div>
+<div class="row" id="eng" style="margin:16px 0"></div><div class="meta"><div><span>Difficulty</span><b class="l${p.d}">${DL[p.d]}</b></div><div><span>Build time</span><b>${p.time}</b></div><div><span>Cost</span><b>${p.cost}</b></div><div><span>Status</span><b>${p.st}</b></div></div>
+<section id="s0"><h2>Overview</h2><p>${E(p.about)}</p><table class="tbl mono"><tr><th>Controller</th><td>${E(p.mcu)}</td></tr><tr><th>Language</th><td>${E(p.lang)}</td></tr><tr><th>Sensors</th><td>${E(p.sens)}</td></tr><tr><th>Actuators</th><td>${E(p.act)}</td></tr><tr><th>Power</th><td>${E(p.pw)}</td></tr><tr><th>Communication</th><td>${E(p.com)}</td></tr></table></section>
+<section id="s1"><h2>Why I built it</h2><p>${E(p.why)}</p></section>
+<section id="s2"><h2>Components</h2><p><a class="btn sm" href="/api/projects/${p.n}/bom.csv">Download BOM (CSV)</a></p><div style="overflow-x:auto"><table class="tbl"><tr><th>Component</th><th>Qty</th><th>Specification</th></tr>${p.bom.map(r=>`<tr><td>${E(r[0])}</td><td class="mono">${r[1]}</td><td class="mono">${E(r[2])}</td></tr>`).join("")}</table></div></section>
+<section id="s3"><h2>Build</h2><ol class="steps">${p.steps.map(s=>`<li><span>${E(s)}</span></li>`).join("")}</ol></section>
+<section id="s4"><h2>Problems and solutions</h2><p>${E(p.prob)}</p></section>
+<section id="s5"><h2>Video</h2>${p.vid?`<div class="video"><a class="btn pri" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${E(p.vid)}">Watch the build on YouTube</a></div>`:`<div class="video">No build video yet.</div>`}</section>
+<section id="s6"><h2>Downloads</h2>${p.files.map(f=>`<div class="dl"><span>${E(f)}</span><button class="btn sm" data-dl>Download</button></div>`).join("")}<p class="mono msg" id="dm" style="color:var(--mute)"></p></section>
+<section id="s7"><h2>Next version</h2><p>${E(p.next)}</p></section><section id="s8"><h2>Revision history</h2>${(p.hist||[{v:"1.0",note:"Initial release"}]).map(h=>`<p><b class="mono">v${E(h.v)}</b> ${E(h.note)}</p>`).join("")}</section><section id="s9"><h2>Comments</h2><div id="cm"></div></section></article></div></div>`},
+creator(id){const u=U[id];if(!u)return nf();const ps=P.filter(p=>p.by===id);return `<div class="wrap"><div class="prof"><div class="av">${E(u.name[0])}</div><div><h1 style="font-size:2rem;margin:0">${E(u.name)}</h1><p class="lead" style="margin:4px 0 0">${E(u.bio)}</p><p class="mono" style="color:var(--mute);margin:6px 0 0">${ps.length} projects · ${u.fol} followers</p></div><div id="fw" style="margin-left:auto"></div></div><div class="sec"><h2>Projects</h2><div class="grid" style="margin-top:14px">${ps.map(card).join("")}</div></div></div>`},
+login(){return `<div class="wrap"><div class="auth"><div class="tabs"><button class="btn sm pri" data-m="in">Sign in</button><button class="btn sm" data-m="up">Create account</button></div><div class="field" id="fn" hidden><label for="nm">Username</label><input id="nm" autocomplete="username"></div><div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email"></div><div class="field"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password"></div><p class="msg" id="er" role="alert"></p><button class="btn pri" id="go" style="width:100%;justify-content:center">Sign in</button><p class="mono" style="color:var(--mute);font-size:.75rem;margin-bottom:0">Preview only. Accounts are stored in this browser until the backend is connected.</p></div></div>`}};
+function nf(){return `<div class="wrap"><div class="sec"><div class="empty">That page doesn’t exist. <a href="#projects" style="color:var(--p)">Browse projects</a></div></div></div>`}
+function wire(r,id){
+if(r==="projects"){let c="All";const cats=["All",...new Set(P.map(p=>p.c))];const draw=()=>{$("#cc").innerHTML=cats.map(k=>`<button class="chip" aria-pressed="${k===c}" data-c="${E(k)}">${E(k)}</button>`).join("");$("#pg").innerHTML=P.filter(p=>c==="All"||p.c===c).map(card).join("");$("#cc").onclick=e=>{const b=e.target.closest("[data-c]");if(b){c=b.dataset.c;draw()}}};draw()}
+if(r==="search"){const run=()=>{const q=$("#q").value.trim().toLowerCase().split(/\s+/).filter(Boolean),lv=+$("#lv").value;const res=P.filter(p=>{const h=[p.t,p.c,p.sub,p.mcu,p.sens,p.act,U[p.by].name,...p.tags].join(" ").toLowerCase();return q.every(w=>h.includes(w))&&(!lv||p.d===lv)});$("#cnt").textContent=res.length+(res.length===1?" project":" projects");$("#sr").innerHTML=res.length?res.map(card).join(""):`<div class="empty" style="grid-column:1/-1">No projects match. Remove a word or set difficulty to Any.</div>`};$("#q").oninput=run;$("#lv").onchange=run;run()}
+if(r==="project"){document.querySelectorAll("[data-s]").forEach((a,i)=>a.onclick=e=>{e.preventDefault();document.getElementById("s"+i).scrollIntoView({behavior:"smooth"})});document.querySelectorAll("[data-dl]").forEach(b=>b.onclick=()=>{$("#dm").textContent="Downloads start working when file storage is connected to the backend."})}
+if(r==="login"){let m="in";const bs=document.querySelectorAll("[data-m]");bs.forEach(b=>b.onclick=()=>{m=b.dataset.m;bs.forEach(x=>x.classList.toggle("pri",x===b));$("#fn").hidden=m==="in";$("#go").textContent=m==="in"?"Sign in":"Create account";$("#er").textContent=""});
+$("#go").onclick=()=>{const em=$("#em").value.trim(),pw=$("#pw").value,nm=$("#nm").value.trim();const er=$("#er");
+if(!/^\S+@\S+\.\S+$/.test(em))return er.textContent="Enter a valid email address.";
+if(pw.length<8)return er.textContent="Password must be at least 8 characters.";
+if(m==="up"&&nm.length<3)return er.textContent="Choose a username with at least 3 characters.";
+mem={name:m==="up"?nm:em.split("@")[0],email:em};setUser(mem);acct();location.hash="home"}}}
+function route(){const h=(location.hash||"#home").slice(1);let r=h,id="";if(h.startsWith("project-")){r="project";id=h.slice(8)}else if(h.startsWith("creator-")){r="creator";id=h.slice(8)}else if(h.startsWith("edit-")){r="edit";id=h.slice(5)}else if(h.startsWith("learn-")){r="learn";id=h.slice(6)}else if(h==="admin"||h.startsWith("admin-")){r="admin";id=h.slice(6)}else if(h.startsWith("verify-")){r="verify";id=h.slice(7)}else if(h.startsWith("reset-")){r="reset";id=h.slice(6)}else if(h.startsWith("confirm-email-")){r="confirm";id=h.slice(14)}else if(h.startsWith("lesson-")){r="lesson";id=h.slice(7)}
+if(!V[r]){app.innerHTML=nf();return}
+app.innerHTML=V[r](id);wire(r,id);
+document.querySelectorAll("#nav a").forEach(a=>{const on=a.dataset.r===r||(r==="project"&&a.dataset.r==="projects")||((r==="learn"||r==="lesson")&&a.dataset.r==="learning");on?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+const t=r==="project"&&P.find(p=>p.n===id);document.title=t?t.t+" — Idevrx":"Idevrx — Ideas engineered into reality";window.scrollTo(0,0)}
+const KEY="idevrx_mine",CAT=["Robotics","Electronics","AI & Computer Vision","Mechanical","Automation"],OK="zip pdf png jpg jpeg svg stl step stp f3d dwg ino py cpp c h md txt csv json mp4".split(" "),STEPS=["Information","Media","Components","Build docs","Files","Video","Preview","Publish"],BASE=P.length;
+let MINE=[],W=null,step=0;try{MINE=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
+const sv=()=>{try{localStorage.setItem(KEY,JSON.stringify(MINE.map(p=>({...p,img:p.img&&p.img.length<150000?p.img:""}))))}catch(e){}};
+const slug=n=>n.toLowerCase().replace(/[^a-z0-9_-]/g,"")||"creator",bump=v=>{const a=v.split(".");return a[0]+"."+(+a[1]+1)},clone=o=>JSON.parse(JSON.stringify(o)),ytId=u=>{const m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:""};
+function sync(){P.length=BASE;MINE.filter(p=>p.ps==="Published").forEach(p=>{P.push(p);if(!U[p.by])U[p.by]={name:p.by,bio:"New creator on Idevrx.",fol:0}})}
+function put(p){const i=MINE.findIndex(x=>x.id===p.id);i<0?MINE.push(p):MINE[i]=p;sv();sync()}
+sync();
+function blank(){const u=cur(),by=slug(u.name);if(!U[by])U[by]={name:u.name,bio:"New creator on Idevrx.",fol:0};return{id:"d"+Date.now().toString(36),n:"",t:"",about:"",c:CAT[0],d:1,time:"",cost:"",st:"Completed",mcu:"",lang:"",sens:"—",act:"—",pw:"—",com:"—",tags:[],img:"",bom:[["","1",""]],why:"",steps:[],prob:"",next:"",files:[],vurl:"",vid:"",ver:"1.0",hist:[],ps:"Draft",by,note:""}}
+const NAV=[["dashboard","Dashboard"],["create","Create project"],["projects","Browse projects"],["search","Search"],["following","Following"],["saved","Saved"],["notifications","Notifications"],["settings","Settings"]];
+const shell=(a,h)=>`<div class="shell"><aside class="side" aria-label="App">${NAV.map(n=>`<a href="#${n[0]}"${n[0]===a?' aria-current="page"':""}>${n[1]}</a>`).join("")}<div class="who">${E((cur()||{}).name||"")}</div></aside><section class="pane">${h}</section></div>`;
+const gate=m=>`<div class="wrap"><div class="auth" style="text-align:center"><p>${m}</p><a class="btn pri" href="#login">Sign in</a></div></div>`;
+const cgate=()=>`<div class="wrap"><div class="auth"><h2>Creator access</h2><p>Only creators can publish projects. Registered users can browse, search and read every project.</p><button class="btn pri" id="gc">Become a creator</button><p style="color:var(--mute);font-size:.8rem;margin-bottom:0">Preview only. Access is granted instantly here.</p></div></div>`;
+const guard=()=>{const u=cur();return !u?gate("Sign in to continue."):!u.creator?cgate():""};
+V.dashboard=()=>{const g=guard();if(g)return g;const me=slug(cur().name),my=MINE.filter(p=>p.by===me);return shell("dashboard",`<div class="sh"><div><h1 style="font-size:2rem;margin:0">Dashboard</h1><span class="lead" style="font-size:.95rem">Your projects and drafts.</span></div><a class="btn pri" href="#create">Create project</a></div>${my.length?`<div style="overflow-x:auto"><table class="tbl"><tr><th>Project</th><th>Status</th><th>Version</th><th></th></tr>${my.map(p=>`<tr><td><b>${E(p.t||"Untitled")}</b><div class="num">${p.n?"Project "+p.n:"No number yet"}</div></td><td><span class="tag">${p.ps}</span></td><td class="mono">v${E(p.ver)}</td><td style="text-align:right;white-space:nowrap"><a class="btn sm" href="#edit-${p.id}">Edit</a> ${p.ps==="Published"?`<a class="btn sm" href="#project-${p.n}">View</a> <button class="btn sm" data-a="un" data-i="${p.id}">Unpublish</button>`:`<button class="btn sm" data-a="rm" data-i="${p.id}">Delete</button>`}</td></tr>`).join("")}</table></div>`:`<div class="empty">No projects yet. <a href="#create" style="color:var(--p)">Create your first project</a>.</div>`}`)};
+V.create=()=>{const g=guard();if(g)return g;W=blank();step=0;return shell("create",`<div id="wz"></div>`)};
+V.edit=id=>{const g=guard();if(g)return g;const p=MINE.find(x=>x.id===id&&x.by===slug(cur().name));if(!p)return nf();W=clone(p);W.vurl=W.vurl||(W.vid?"https://youtu.be/"+W.vid:"");step=0;return shell("create",`<div id="wz"></div>`)};
+const chk=()=>[["Title",W.t.trim()],["Description",W.about.trim()],["Cover image",W.img],["Components",W.bom.some(r=>r[0].trim())],["Build instructions",W.steps.some(s=>s.trim())],["Files",W.files.length],["Category",W.c]].map(x=>[x[0],!!x[1]]);
+function as(){if(W.ps==="Published")return;put(clone(W));const s=$("#sa");if(s)s.textContent="Saved"}
+function pub(){if(chk().some(x=>!x[1]))return;const first=!W.n;if(first)W.n=String(Math.max(0,...P.concat(MINE).map(p=>+p.n||0))+1).padStart(3,"0");W.ver=first?"1.0":bump(W.ver);W.hist=(W.hist||[]).concat([{v:W.ver,note:W.note||(first?"Initial release":"Updated")}]);W.note="";W.slug=W.t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");["time","cost","mcu","lang"].forEach(k=>{if(!W[k].trim())W[k]="—"});W.steps=W.steps.filter(s=>s.trim());W.bom=W.bom.filter(r=>r[0].trim());W.sub=W.c;W.ps="Published";put(clone(W));location.hash="project-"+W.n}
+function img(f,cb){const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{const w=Math.min(720,i.width),c=document.createElement("canvas");c.width=w;c.height=w*i.height/i.width;c.getContext("2d").drawImage(i,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.72))};i.onerror=()=>cb("");i.src=r.result};r.readAsDataURL(f)}
+function body(){const fi=(k,l,v)=>`<div class="field"><label for="f_${k}">${l}</label><input id="f_${k}" data-k="${k}" value="${E(v!==undefined?v:W[k])}"></div>`,ta=(k,l,v,r)=>`<div class="field"><label for="f_${k}">${l}</label><textarea id="f_${k}" data-k="${k}" rows="${r||4}">${E(v!==undefined?v:W[k])}</textarea></div>`,sel=(k,l,o)=>`<div class="field"><label for="f_${k}">${l}</label><select id="f_${k}" data-k="${k}">${o.map(x=>`<option value="${E(x[0])}"${String(W[k])===String(x[0])?" selected":""}>${E(x[1])}</option>`).join("")}</select></div>`,g=(a,b)=>`<div class="g2">${a}${b}</div>`;
+switch(step){
+case 0:return fi("t","Title")+ta("about","Description",undefined,3)+g(sel("c","Category",CAT.map(x=>[x,x])),sel("d","Difficulty",[1,2,3,4].map(i=>[i,DL[i]])))+g(fi("time","Estimated build time"),fi("cost","Estimated cost"))+g(fi("mcu","Controller"),fi("lang","Programming language"))+g(fi("tags","Tags, comma separated",W.tags.join(", ")),sel("st","Build status",[["Completed","Completed"],["In progress","In progress"]]));
+case 1:return `<div class="field"><label for="fc">Cover image</label><input id="fc" type="file" accept="image/*"></div>${W.img?`<img src="${W.img}" alt="Cover preview" style="max-width:360px;width:100%;border:1px solid var(--line);border-radius:10px"><p><button class="btn sm" id="ri">Remove image</button></p>`:`<div class="empty">Add a clear photo of the finished build.</div>`}`;
+case 2:return `<div style="overflow-x:auto"><table class="tbl"><tr><th>Component</th><th>Qty</th><th>Specification</th><th></th></tr>${W.bom.map((r,i)=>`<tr>${[0,1,2].map(j=>`<td><input aria-label="${["Component","Quantity","Specification"][j]} ${i+1}" data-b="${i},${j}" value="${E(r[j])}"></td>`).join("")}<td><button class="btn sm" data-rm="${i}" aria-label="Remove row ${i+1}">Remove</button></td></tr>`).join("")}</table></div><p><button class="btn sm" id="ab">Add component</button></p>`;
+case 3:return ta("why","Why you built it")+ta("steps","Build steps, one per line",W.steps.join("\n"),6)+ta("prob","Problems and solutions")+ta("next","Next version");
+case 4:return `<div class="field"><label for="ff">Project files</label><input id="ff" type="file" multiple></div><p class="msg" id="fm"></p>${W.files.map((f,i)=>`<div class="dl"><span>${E(f)}</span><button class="btn sm" data-rf="${i}">Remove</button></div>`).join("")||`<div class="empty">Add source code, schematics, CAD files and a project ZIP.</div>`}<p style="color:var(--mute);font-size:.85rem">Preview: file names are recorded now. Uploads start when storage is connected.</p>`;
+case 5:return fi("vurl","YouTube link",W.vurl||"")+`<p id="vm" style="color:var(--mute)">${W.vid?"Video found: "+E(W.vid):"Optional. Paste a youtube.com or youtu.be link."}</p>`;
+case 6:return `<h2>Project check</h2><ul class="ck">${chk().map(x=>`<li>${x[1]?"Done":"Missing"}: ${x[0]}</li>`).join("")}</ul>`;
+default:{const c=chk(),ok=c.every(x=>x[1]);return `<h2>Publish</h2><p>${ok?"Everything is in place.":"Complete these first: "+c.filter(x=>!x[1]).map(x=>x[0]).join(", ")+"."}</p>${W.n?ta("note","What changed in this version?",undefined,3):""}<p class="num">Publishing as v${W.n?bump(W.ver):"1.0"}</p><button class="btn pri" id="pb"${ok?"":" disabled"}>Publish</button>`}}}
+function dw(){const el=$("#wz");if(!el)return;const pb=W.ps==="Published";el.innerHTML=`<div class="sh"><div><h1 style="font-size:2rem;margin:0">${W.n?"Edit project "+W.n:"Create project"}</h1><span class="lead" style="font-size:.95rem">${pb?"Changes go live when you publish.":"Drafts save automatically."} <span id="sa"></span></span></div>${pb?"":`<button class="btn" id="sd">Save draft</button>`}</div><div class="chips">${STEPS.map((s,i)=>`<button class="chip" data-st="${i}" aria-pressed="${i===step}">${i+1}. ${s}</button>`).join("")}</div><div>${body()}</div><div class="row" style="margin-top:22px"><button class="btn" id="bk"${step?"":" disabled"}>Back</button>${step<7?`<button class="btn pri" id="nx">Next</button>`:""}</div>`;
+el.oninput=e=>{const t=e.target,k=t.dataset.k,b=t.dataset.b;if(b){const[i,j]=b.split(",");W.bom[i][j]=t.value}else if(k){let v=t.value;if(k==="tags")v=v.split(",").map(s=>s.trim()).filter(Boolean);else if(k==="steps")v=v.split("\n");else if(k==="d")v=+v;W[k]=v;if(k==="vurl"){W.vid=ytId(v);const m=$("#vm");if(m)m.textContent=W.vid?"Video found: "+W.vid:v?"That doesn’t look like a YouTube link.":"Optional. Paste a youtube.com or youtu.be link."}}else return;as()};
+el.onchange=e=>{const t=e.target;if(t.id==="fc"&&t.files[0])img(t.files[0],d=>{if(d){W.img=d;as()}dw()});if(t.id==="ff"){let m="";[...t.files].forEach(f=>{const x=f.name.split(".").pop().toLowerCase();if(!OK.includes(x))m+=f.name+" was rejected: ."+x+" files aren’t allowed. ";else if(f.size>2e7)m+=f.name+" is over 20 MB. ";else W.files.push(f.name+" · "+Math.ceil(f.size/1024)+" KB")});as();dw();$("#fm").textContent=m}};
+el.onclick=e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.st!==undefined){step=+d.st;dw()}else if(b.id==="bk"){step--;dw()}else if(b.id==="nx"){step++;dw()}else if(b.id==="ab"){W.bom.push(["","1",""]);dw()}else if(d.rm!==undefined){W.bom.splice(+d.rm,1);if(!W.bom.length)W.bom.push(["","1",""]);as();dw()}else if(d.rf!==undefined){W.files.splice(+d.rf,1);as();dw()}else if(b.id==="ri"){W.img="";as();dw()}else if(b.id==="sd")as();else if(b.id==="pb")pub()}}
+const w0=wire;wire=function(r,id){w0(r,id);const g=$("#gc");if(g)g.onclick=()=>{const u=cur();u.creator=true;mem=u;setUser(u);route()};if(r==="create"||r==="edit")dw();if(r==="dashboard")app.onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const p=MINE.find(x=>x.id===b.dataset.i);if(b.dataset.a==="un"&&p)p.ps="Unpublished";else MINE=MINE.filter(x=>x.id!==b.dataset.i);sv();sync();route()}};
+
+</script><script src="/viewers.js"></script>
+<script src="/bridge.js"></script>
+</body></html>
